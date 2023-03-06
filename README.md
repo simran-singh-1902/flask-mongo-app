@@ -15,6 +15,11 @@ example:
 
 Running the scaffolding app is very easy. First [install](https://docs.docker.com/install/) docker for your operating system from the docs provided in the docker website. Also [install](https://docs.docker.com/compose/install/) docker-compose
 
+For mac m1 chip export these variables:
+
+    export DOCKER_BUILDKIT=0   
+    export COMPOSE_DOCKER_CLI_BUILD=0      
+    
 Then run
 
     sudo docker-compose build
@@ -29,26 +34,3 @@ The index view will be displayed in your browser.
 
 A `logs` folder is created in the root of the project i.e outside the `src` folder, which is mounted using the docker-compose volume mount. It will contain a file `flask-scaffolding.log` and will contain the project logs.
 
-***Your Assignment***
-
-You have to achieve two major tasks:
-
-    Create a Login API (JSON) in flask in this structure.
-    Setup celery in this project and write a task that stores last login information in another collection of mongo
-
-Go through the structure of the project and figure out how you would proceed.
-
-Make sure that all the api only logic should go in api layer (i.e. views.py) and all the business logic should go in the service layer (i.e. user_service.py).
-Schema goes in the models/user.py file.
-
-Refer docstrings in the above mentioned files.
-
-***Submission***
-
-For submitting your work, follow these steps:-
-
-Push the codes in your personal Github Repo (Make sure it's public repository)
-
-Put the screenshots of the running application inside the images folder
-
-Share the link of your Github repo with Recruiter/HR Executive
