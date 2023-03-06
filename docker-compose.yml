@@ -1,0 +1,50 @@
+version: '2'
+
+services:
+  
+  # database service
+  db:
+    image: mongo:3.6
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./data/mongodb:/data/db
+    command: --smallfiles
+
+  # web service for flask application
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: flask-scaffolding:assessment
+    env_file:
+      local.env
+    command: >
+      /bin/ash -c "
+        flask run --host=0.0.0.0
+      "
+    volumes:
+      - ./src/:/code
+      - ./logs:/var/log/scaffolding
+    ports:
+      - "8400:5000"
+    depends_on:
+      - db
+  
+  # rabbit:
+  #   hostname: rabbit
+  #   image: "rabbitmq:3-management"
+  #   environment:
+  #     - RABBITMQ_DEFAULT_USER=admin
+  #     - RABBITMQ_DEFAULT_PASS=mypass
+  #   ports:
+  #     - "15672:15672"
+  #     - "5672:5672"
+ 
+  # worker:
+  #   build: './worker'
+  #   user: nobody
+  #   depends_on:
+  #     - rabbit
+  #     - flask_app
+  #     - mongodb_container
