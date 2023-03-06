@@ -27,6 +27,7 @@ def dummy_data():
         db.user.insert_one({"username":"Muskan", "password_hash":generate_password_hash("1234")})
         db.user.insert_one({"username":"Lakshya", "password_hash":generate_password_hash("1235")})
         logger.info("Added dummy data successfully!!")
+        return jsonify({'status': 'Added dummy users successfully!!'}), 200
         
     except Exception as e:
         return jsonify({'error exception': str(e)}), 500
