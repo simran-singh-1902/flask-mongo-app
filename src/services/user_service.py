@@ -19,7 +19,10 @@ class UserService(object):
         """
         user = User.get_user_by_username(username)
         for user in user:
-            if user and User(user['username'], user['password_hash']).verify_password(password):
+            print(user)
+            verrified = User(user['first_name'], user['last_name'],user['email'], user['username'], user['password_hash'], user['created_on']).verify_password(password)
+            if user and verrified:
+                print(verrified)
                 return str(user['username'])+ "_" +str(user['_id'])
         else:
             raise ValueError('Invalid username or password')

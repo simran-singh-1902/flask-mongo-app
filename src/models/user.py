@@ -31,6 +31,7 @@ class User(Document):
 
   def get_user_by_username(username):
     db = get_db()
+    print("in models.py")
     query = {'username': username}
     return db.user.find(query)
   
