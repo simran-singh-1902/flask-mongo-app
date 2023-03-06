@@ -19,7 +19,6 @@ class UserService(object):
         """
         user = User.get_user_by_username(username)
         for user in user:
-            print(user)
             if user and User(user['username'], user['password_hash']).verify_password(password):
                 return str(user['username'])+ "_" +str(user['_id'])
         else:

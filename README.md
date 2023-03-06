@@ -39,6 +39,7 @@ A `logs` folder is created in the root of the project i.e outside the `src` fold
 Start by adding dummy users for now - 
 
     http://localhost:8400/add-users
+    method = GET
 
 the above url will add dummy users for now to your mongodb collection
 
@@ -50,3 +51,20 @@ For logging in -
     "username": "Simran",
     "password": "123"
     }
+
+For creating user -
+
+    http://localhost:8400/create-user
+    method = POST
+    Payload = {
+        "first_name":"Simran",
+        "last_name":"Singh",
+        "email":"Simran@gmail.com",
+        "username":"Simran",
+        "password": 123
+        }
+
+List all users - 
+    
+    http://localhost:8400/get-users
+    method = GET
