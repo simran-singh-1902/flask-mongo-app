@@ -34,3 +34,19 @@ The index view will be displayed in your browser.
 
 A `logs` folder is created in the root of the project i.e outside the `src` folder, which is mounted using the docker-compose volume mount. It will contain a file `flask-scaffolding.log` and will contain the project logs.
 
+***APIS***
+
+Start by adding dummy users for now - 
+
+    http://localhost:8400/add-users
+
+the above url will add dummy users for now to your mongodb collection
+
+For logging in -
+
+    http://localhost:8400/login
+    method = POST
+    Payload = {
+    "username": "Simran",
+    "password": "123"
+    }
